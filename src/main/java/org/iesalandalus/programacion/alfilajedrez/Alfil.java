@@ -16,6 +16,22 @@ public class Alfil {
 		posicion=new Posicion(8,'f');
 	}
 	
+	// CONSTRUCTOR DE ALFIL CON EL COLOR
+	
+	public Alfil(Color color) {
+		if(color.equals("NEGRO")) {
+			color=Color.NEGRO;
+			posicion=new Posicion(8,'f');
+		} else {
+			if(color.equals("BLANCO")) {
+				color=Color.BLANCO;
+				posicion=new Posicion(1,'a');
+			}else {
+				System.out.println("EL VALOR DE COLOR INTRODUCIDO NO ES VALIDO");
+			}
+		}
+	}
+	
 	// SET Y GET
 	
 	private void setPosicion(Posicion posicion) {
