@@ -9,6 +9,13 @@ public class Alfil {
 	
 	// METODOS
 	
+	// CONSTRUCTOR POR DEFECTO
+	
+	public Alfil(){
+		color=Color.NEGRO;
+		posicion=new Posicion(8,'f');
+	}
+	
 	// SET Y GET
 	
 	private void setPosicion(Posicion posicion) {
