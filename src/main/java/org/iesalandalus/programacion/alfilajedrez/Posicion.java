@@ -10,7 +10,42 @@ public class Posicion {
 	
 	// METODOS
 	
-		//SET y GET
+	// CONSTRUCTOR POR PARAMENTROS FILA Y COLUMNA
+	
+	public Posicion (int fila, char columna) {
+		boolean validacionFila=false;
+		boolean validacionColumna=false;
+		
+		if(fila>=1&&fila<=8) { 					/* COMPROBACION DE FILA */
+			validacionFila=true;
+		}
+		
+		String caracteresValidos = "abcdefgh"; /*COMPROBACION DE COLUMNA*/
+		int i=0;
+		while(i<=7) {
+			if(caracteresValidos.charAt(i)==columna) {
+				validacionColumna=true;
+				i=8;
+			}else {
+				i++;
+			}
+		}
+		
+		if(validacionFila==true&&validacionColumna==true) {
+			this.fila=fila;
+			this.columna=columna;
+		}else {
+			if(validacionFila==false) {
+				System.out.println("VALOR NO VALIDO PARA EL ATRIBUTO FILA");
+			}
+			if(validacionColumna==false) {
+				System.out.println("VALOR NO VALIDO PARA EL ATRIBUTO COLUMNA");
+			}
+		}
+		
+	}
+	
+	//SET y GET
 	
 	private void setFila(int fila) {
 		//CHECK FILA
