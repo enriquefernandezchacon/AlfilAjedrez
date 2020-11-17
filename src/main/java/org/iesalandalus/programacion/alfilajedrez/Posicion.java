@@ -45,6 +45,13 @@ public class Posicion {
 		
 	}
 	
+	//CONSTRUCTOR COPIA
+	
+	public Posicion (Posicion copia) {
+		this.fila=copia.getFila();
+		this.columna=copia.getColumna();
+	}
+	
 	//SET y GET
 	
 	private void setFila(int fila) {
