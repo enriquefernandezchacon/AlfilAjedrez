@@ -23,12 +23,24 @@ public class Alfil {
 			color=Color.NEGRO;
 			posicion=new Posicion(8,'f');
 		} else {
-			if(color.equals("BLANCO")) {
+			color=Color.BLANCO;
+			posicion=new Posicion(1,'a');
+		}
+	}
+	
+	//CONSTRUCTOR DE ALFIL CON COLOR Y COLUMNA
+	
+	public Alfil(Color color,char columna) {
+		if(columna=='c'||columna=='f') {
+			if(color.equals("NEGRO")) {
+				color=Color.NEGRO;
+				posicion=new Posicion(8,columna);
+			} else {
 				color=Color.BLANCO;
-				posicion=new Posicion(1,'a');
-			}else {
-				System.out.println("EL VALOR DE COLOR INTRODUCIDO NO ES VALIDO");
+				posicion=new Posicion(1,columna);
 			}
+		}else{
+			System.out.println("VALOR NO VALIDO PARA EL VALOR DE COLUMNA");
 		}
 	}
 	
