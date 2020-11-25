@@ -2,12 +2,15 @@ package org.iesalandalus.programacion.alfilajedrez;
 
 import javax.naming.OperationNotSupportedException;
 
+import org.iesalandalus.programacion.utilidades.Entrada;
+
 public class MainApp {
 	
 	private Alfil alfil; 
 
 	public static void main(String[] args)  {
 		mostrarMenu();
+		int opcion=elegirOpcion();
 	}
 
 	private static void mostrarMenu() {
@@ -20,4 +23,12 @@ public class MainApp {
 		System.out.println("5. SALIR");
 	}
 	
+	private static int elegirOpcion() {
+		int i=0;
+		do {
+			System.out.print("INTRODUZCA LA OPCION DESEADA: ");
+			i=Entrada.entero();
+		}while(i<1||i>5);
+		return i;
+	}
 }
