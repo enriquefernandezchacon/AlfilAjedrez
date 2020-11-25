@@ -6,11 +6,12 @@ import org.iesalandalus.programacion.utilidades.Entrada;
 
 public class MainApp {
 	
-	private Alfil alfil; 
+	private static Alfil alfil; 
 
 	public static void main(String[] args)  {
 		mostrarMenu();
 		int opcion=elegirOpcion();
+		ejecutarOpcion(opcion);
 	}
 
 	private static void mostrarMenu() {
@@ -30,5 +31,33 @@ public class MainApp {
 			i=Entrada.entero();
 		}while(i<1||i>5);
 		return i;
+	}
+	
+	private static void ejecutarOpcion(int opcion) {
+		switch(opcion) {
+			case 1:
+				crearAlfilDefecto();
+				break;
+			case 2:
+							
+							
+				break;
+			case 3:
+				
+				
+				break;
+			case 4:
+				
+				
+				break;
+			case 5:
+				
+				
+				break;
+		}
+	}
+	
+	private static void crearAlfilDefecto() {
+		alfil= new Alfil();
 	}
 }
