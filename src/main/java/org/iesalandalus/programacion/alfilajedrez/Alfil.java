@@ -8,19 +8,20 @@ public class Alfil {
 	
 	private Color color;
 	private Posicion posicion;
+	private Posicion alfilCambio;
 	
 	// METODOS
 	
 	// CONSTRUCTOR POR DEFECTO
 	
-	public Alfil(){
+	public Alfil() throws NullPointerException,IllegalArgumentException {
 		posicion=new Posicion(8,'f');
 		setColor(Color.NEGRO);
 	}
 	
 	// CONSTRUCTOR DE ALFIL CON EL COLOR
 	
-	public Alfil(Color color) {
+	public Alfil(Color color) throws NullPointerException,IllegalArgumentException {
 		setColor(color);
 		if(color==Color.NEGRO) {
 			posicion=new Posicion(8,'f');
@@ -31,7 +32,7 @@ public class Alfil {
 	
 	//CONSTRUCTOR DE ALFIL CON COLOR Y COLUMNA
 	
-	public Alfil(Color color,char columna) {
+	public Alfil(Color color,char columna)throws NullPointerException,IllegalArgumentException {
 		setColor(color);
 		int fila=1;
 		if(color==Color.NEGRO) {
@@ -42,12 +43,12 @@ public class Alfil {
 	
 	// SET Y GET
 	
-	private void setPosicion(Posicion posicion) {
-		if (posicion==null) {
+	private void setPosicion(Posicion alfilCambio) throws NullPointerException,IllegalArgumentException {
+		if (alfilCambio==null) {
 			throw new NullPointerException("Null no valido.");
 		}
 		
-		this.posicion=new Posicion(posicion);
+		posicion=new Posicion(alfilCambio);
 	}
 	
 	public Posicion getPosicion() {
@@ -112,16 +113,12 @@ public class Alfil {
 		if(valorColumnaNueva>=0&&valorColumnaNueva<=7) {
 			columnaNueva=caracteres.charAt(valorColumnaNueva);
 		}else {
-			columnaNueva='w';
-		}
-		
-		try {
-			posicion.setColumna(columnaNueva);
-			posicion.setFila(filaNueva);
-		} catch (IllegalArgumentException posicion) {
 			throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
 		}
-	}
+		alfilCambio=new Posicion(filaNueva, columnaNueva);
+		setPosicion(alfilCambio);
+		}
+
 
 	@Override
 	public int hashCode() {

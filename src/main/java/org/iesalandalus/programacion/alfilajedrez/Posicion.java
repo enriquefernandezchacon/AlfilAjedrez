@@ -29,7 +29,7 @@ public class Posicion {
 	
 	//SET y GET
 	
-	public void setFila(int fila) {
+	private void setFila(int fila) {
 		//CHECK FILA
 		if(fila>=1&&fila<=8) {
 			this.fila=fila;
@@ -42,7 +42,7 @@ public class Posicion {
 		return fila;
 	}
 	
-	public void setColumna(char columna) {
+	private void setColumna(char columna) {
 		String caracteresValidos = "abcdefgh"; /*COMPROBACION DE COLUMNA*/
 		boolean validacionColumna=false;
 		for(int i=0;i<caracteresValidos.length();i++){
