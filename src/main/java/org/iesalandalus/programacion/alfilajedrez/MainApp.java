@@ -3,6 +3,7 @@ package org.iesalandalus.programacion.alfilajedrez;
 import javax.naming.OperationNotSupportedException;
 
 import org.iesalandalus.programacion.utilidades.Entrada;
+import org.junit.jupiter.params.shadow.com.univocity.parsers.conversions.LowerCaseConversion;
 
 public class MainApp {
 	
@@ -44,8 +45,7 @@ public class MainApp {
 				crearAlfilColor();					
 				break;
 			case 3:
-				
-				
+				crearAlfilColorColumna();				
 				break;
 			case 4:
 				
@@ -65,6 +65,7 @@ public class MainApp {
 	private static void crearAlfilColor() {
 		Color color;
 		color=elegirColor();
+		
 		alfil=new Alfil(color);
 	}
 	
@@ -83,5 +84,28 @@ public class MainApp {
 		}else {
 			return Color.BLANCO;
 		}
+	}
+	
+	private static void crearAlfilColorColumna() {
+		Color color;
+		char columna;
+		
+		color=elegirColor();
+		columna=elegirColumnaInicial();
+		
+		alfil=new Alfil(color, columna);
+	}
+	
+	private static char elegirColumnaInicial(){
+		System.out.println("ELIJA LA COLUMNA INICIAL");
+		System.out.println("________________________\n");
+		System.out.println("C. COLUMNA 'C'");
+		System.out.println("F. COLUMNA 'F'");
+		char columna;
+		do {
+			System.out.println("INTRODUZCA LA COLUMNA");
+			columna=Character.toLowerCase(Entrada.caracter());
+		}while(columna!='c'&&columna!='f');
+		return columna;
 	}
 }
