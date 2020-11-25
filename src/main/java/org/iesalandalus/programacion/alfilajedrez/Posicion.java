@@ -12,54 +12,29 @@ public class Posicion {
 	
 	// CONSTRUCTOR POR PARAMENTROS FILA Y COLUMNA
 	
-	public Posicion (int fila, char columna) {
-		boolean validacionFila=false;
-		boolean validacionColumna=false;
-		
-		if(fila>=1&&fila<=8) { 					/* COMPROBACION DE FILA */
-			validacionFila=true;
-		}
-		
-		String caracteresValidos = "abcdefgh"; /*COMPROBACION DE COLUMNA*/
-		int i=0;
-		while(i<=7) {
-			if(caracteresValidos.charAt(i)==columna) {
-				validacionColumna=true;
-				i=8;
-			}else {
-				i++;
-			}
-		}
-		
-		if(validacionFila==true&&validacionColumna==true) {
-			this.fila=fila;
-			this.columna=columna;
-		}else {
-			if(validacionFila==false) {
-				System.out.println("VALOR NO VALIDO PARA EL ATRIBUTO FILA");
-			}
-			if(validacionColumna==false) {
-				System.out.println("VALOR NO VALIDO PARA EL ATRIBUTO COLUMNA");
-			}
-		}
-		
+	
+	public Posicion (int fila, char columna) {	
+			setFila(fila);
+			setColumna(columna);
 	}
 	
 	//CONSTRUCTOR COPIA
 	
 	public Posicion (Posicion copia) {
-		this.fila=copia.getFila();
-		this.columna=copia.getColumna();
+		if (copia==null)
+			throw new NullPointerException("ERROR: No es posible copiar una posición nula.");
+		setFila(copia.getFila());
+		setColumna(copia.getColumna());
 	}
 	
 	//SET y GET
 	
-	private void setFila(int fila) {
+	public void setFila(int fila) {
 		//CHECK FILA
 		if(fila>=1&&fila<=8) {
 			this.fila=fila;
 		}else {
-			System.out.println("VALOR NO VALIDO PARA EL ATRIBUTO FILA");
+			throw new IllegalArgumentException("ERROR: Fila no válida.");
 		}
 	}
 	
@@ -67,22 +42,19 @@ public class Posicion {
 		return fila;
 	}
 	
-	private void setColumna(char columna) {
+	public void setColumna(char columna) {
+		String caracteresValidos = "abcdefgh"; /*COMPROBACION DE COLUMNA*/
 		boolean validacionColumna=false;
-		String caracteresValidos="abcdefgh";
-		int i;
-		for(i=0;i<=7;i++) { /* Bucle para evaluar si el valor esta entre "A" y "H" */
-			if(caracteresValidos.charAt(i)==columna) { 
-				i=8;
+		for(int i=0;i<caracteresValidos.length();i++){
+			if(caracteresValidos.charAt(i)==columna) {
 				validacionColumna=true;
-			}	
+			}
 		}
 		if(validacionColumna==true) {
 			this.columna=columna;
 		}else {
-			System.out.println("Valor no valido para la columna");
+			throw new IllegalArgumentException("ERROR: Columna no válida.");
 		}
-		this.columna = columna;
 	}
 	
 	public char getColumna() {
@@ -120,11 +92,6 @@ public class Posicion {
 	
 	@Override
 	public String toString() {
-		return "Posicion [ fila= " + fila + ", columna= " + columna + "]";
+		return "fila=" + this.fila + ", columna=" + this.columna;
 	}
-	
-	
-	
-	
-	
 }
