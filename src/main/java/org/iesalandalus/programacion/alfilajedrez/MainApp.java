@@ -12,6 +12,8 @@ public class MainApp {
 		mostrarMenu();
 		int opcion=elegirOpcion();
 		ejecutarOpcion(opcion);
+		
+		System.out.println(alfil);
 	}
 
 	private static void mostrarMenu() {
@@ -39,8 +41,7 @@ public class MainApp {
 				crearAlfilDefecto();
 				break;
 			case 2:
-							
-							
+				crearAlfilColor();					
 				break;
 			case 3:
 				
@@ -59,5 +60,28 @@ public class MainApp {
 	
 	private static void crearAlfilDefecto() {
 		alfil= new Alfil();
+	}
+	
+	private static void crearAlfilColor() {
+		Color color;
+		color=elegirColor();
+		alfil=new Alfil(color);
+	}
+	
+	private static Color elegirColor() {
+		System.out.println("ELIJA EL COLOR DEL PEON");
+		System.out.println("-----------------------\n");
+		System.out.println("1. NEGRO");
+		System.out.println("2. BLANCO");
+		int opcion=0;
+		do {
+			System.out.println("INTRODUZCA COLOR");
+			opcion=Entrada.entero();
+		}while(opcion!=1&&opcion!=2);
+		if(opcion==1) {
+			return Color.NEGRO;
+		}else {
+			return Color.BLANCO;
+		}
 	}
 }
