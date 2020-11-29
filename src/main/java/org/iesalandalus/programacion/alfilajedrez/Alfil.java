@@ -71,6 +71,8 @@ public class Alfil {
 		return color;
 	}
 
+	// METODO PARA MOVER EL ALFIL
+	
 	public void mover (Direccion direccion, int pasos) throws OperationNotSupportedException {
 		if (direccion==null) {
 			throw new NullPointerException("ERROR: La dirección no puede ser nula.");
@@ -119,7 +121,8 @@ public class Alfil {
 		setPosicion(alfilCambio);
 		}
 
-
+	// METODOS EQUALS Y HASHCODE
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -147,6 +150,8 @@ public class Alfil {
 			return false;
 		return true;
 	}
+	
+	// METODO TO STRING
 
 	@Override
 	public String toString() {

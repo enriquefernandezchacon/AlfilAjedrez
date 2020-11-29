@@ -3,12 +3,13 @@ package org.iesalandalus.programacion.alfilajedrez;
 import javax.naming.OperationNotSupportedException;
 
 import org.iesalandalus.programacion.utilidades.Entrada;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.conversions.LowerCaseConversion;
 
 public class MainApp {
 	
 	private static Alfil alfil; 
 
+	//EJECUCION PRINCIPAL
+	
 	public static void main(String[] args)  {
 		int i=1;
 		do {
@@ -20,6 +21,8 @@ public class MainApp {
 		}while(i != 0);
 	}
 
+	// VISION DEL MENU DE ELECCION DE OPCIONES
+	
 	private static void mostrarMenu() {
 		System.out.println("----------------");
 		System.out.println("MENU DE OPCIONES");
@@ -31,6 +34,8 @@ public class MainApp {
 		System.out.println("5. SALIR\n");
 	}
 	
+	// LECTURA DE LA OPCION ELEGIDA
+	
 	private static int elegirOpcion() {
 		int i=0;
 		do {
@@ -40,6 +45,8 @@ public class MainApp {
 		}while(i<1||i>5);
 		return i;
 	}
+	
+	//METODO PARA EJECUTAR LA OPCION ELEGIDA
 	
 	private static void ejecutarOpcion(int opcion) {
 		switch(opcion) {
@@ -62,6 +69,8 @@ public class MainApp {
 		}
 	}
 	
+	// CREAR NUEVO ALFIL POR DEFECTO NEGRO EN (8,F)
+	
 	private static void crearAlfilDefecto() {
 		try{
 			alfil=new Alfil();
@@ -69,6 +78,8 @@ public class MainApp {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	// CREAR NUEVO ALFIL ELIGIENDO EL COLOR
 	
 	private static void crearAlfilColor() {
 		Color color;
@@ -101,6 +112,8 @@ public class MainApp {
 		}
 	}
 	
+	//CREAR NUEVO ALFIL ELIGIENDO EL COLOR Y LA COLUMNA INICIAL
+	
 	private static void crearAlfilColorColumna() {
 		Color color;
 		char columna;
@@ -112,8 +125,11 @@ public class MainApp {
 			alfil=new Alfil(color, columna);
 		}catch(NullPointerException | IllegalArgumentException e) {
 			System.out.println(e.getMessage());
+			System.out.println();
 		}
 	}
+	
+	// ELECCION DE LA COLUMNA DEL ALFIL CREADO
 	
 	private static char elegirColumnaInicial(){
 		System.out.println("\n------------------------");
@@ -128,6 +144,8 @@ public class MainApp {
 		}while(columna!='c'&&columna!='f');
 		return columna;
 	}
+	
+	// ELECCION DE PASOS Y DIRECCION DEL MOVIMIENTO
 	
 	private static void mover(){
 		Direccion direccion;
@@ -149,6 +167,8 @@ public class MainApp {
 		}
 	}
 	
+	// MENU DE DIRECCIONES
+	
 	private static void mostrarMenuDirecciones () {
 		System.out.println("----------------");
 		System.out.println("OPCIONES DE DIRECCIÓN");
@@ -158,6 +178,8 @@ public class MainApp {
 		System.out.println("3. ARRIBA IZQUIERDA");
 		System.out.println("4. ABAJO IZQUIERDA");
 	}
+	
+	// ELECCION DE LA DIRECCION POR PARTE DEL USUSARIO
 	
 	private static Direccion elegirDireccion() {
 		int i=0;
@@ -180,6 +202,8 @@ public class MainApp {
 		}
 		
 	}
+	
+	// METODO PARA MOSTRAR EL VALOR ACTUAL DEL ALFIL (COLOR Y POSICION ACTUAL)
 	
 	private static void mostrarAlfil () {
 		System.out.print(alfil);
